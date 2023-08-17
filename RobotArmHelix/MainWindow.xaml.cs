@@ -101,7 +101,7 @@ namespace RobotArmHelix
         private const string MODEL_PATH17 = "IRB6700-MH3_245-300_IRC5_rev00_LOGO2_CAD.stl";
         private const string MODEL_PATH18 = "IRB6700-MH3_245-300_IRC5_rev00_LOGO3_CAD.stl";
         private const string MODEL_PATH19 = "Stand.stl";
-        private const string MODEL_PATH20 = "IRB6700-MH3_245-300_IRC5_rev00_CYLINDER_CAD.stl";
+        private const string MODEL_PATH20 = "MoveBaseV2.stl";
 #else
 
         private const string MODEL_PATH1 = "IRB4600_20kg-250_LINK1_CAD_rev04.stl";
@@ -159,9 +159,9 @@ namespace RobotArmHelix
             viewPort3d.PanGesture = new MouseGesture(MouseAction.LeftClick);
             viewPort3d.Children.Add(visual);
             viewPort3d.Children.Add(RoboticArm);
-            viewPort3d.Camera.LookDirection = new Vector3D(2038, -5200, -2930);
-            viewPort3d.Camera.UpDirection = new Vector3D(-0.145, 0.372, 0.917);
-            viewPort3d.Camera.Position = new Point3D(-1571, 4801, 3774);
+            viewPort3d.Camera.LookDirection = new Vector3D(1843, -305, -788);
+            viewPort3d.Camera.UpDirection = new Vector3D(-0.468, 0.078, 0.880);
+            viewPort3d.Camera.Position = new Point3D(-1620, 440, 800);
 
             double[] angles = { joints[0].angle, joints[1].angle, joints[2].angle, joints[3].angle, joints[4].angle, joints[5].angle };
             ForwardKinematics(angles);
@@ -198,34 +198,63 @@ namespace RobotArmHelix
                     if(modelName == "Stand.stl")
                     {
                         model = f.SetPositionData(model, Colors.Red, -60, 0, -60);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
                     }
-                    if (modelName == "Base.stl")
+                    else if (modelName == "Base.stl")
                     {
-                        model = f.SetPositionData(model, Colors.White, -80, 80, -35);
+                        model = f.SetPositionData(model, Colors.White, -80, 90, -35);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 0, 0, 1, 180);
+
                     }
-                    model = f.SetRotaion(model, 1, 0, 0, 90);
+                    else if (modelName == "MoveBaseV2.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.White, -88, -90, -45);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 1, 0, 0, 180);
+                        model = f.SetRotaion(model, 0, 0, 1, 180);
+
+                    }
+                    else if (modelName == "L1_link.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.Green, -13.5, 126,  -15.5);
+                        model = f.SetRotaion(model, 0, 1, 0, 90);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                    }
+                    else if (modelName == "L2_link.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.Green, -21.8, 230.2, -10);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 0, 0, 1, -90);
+                        model = f.SetRotaion(model, 1, 0, 0, -30);
+
+                    }
+                    else
+                    {
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                    }
                     joints.Add(new Joint(link));
                 }
 
                 RA.Children.Add(joints[0].model);
                 RA.Children.Add(joints[1].model);
                 RA.Children.Add(joints[2].model);
-                RA.Children.Add(joints[3].model);
-                RA.Children.Add(joints[4].model);
-                RA.Children.Add(joints[5].model);
-                RA.Children.Add(joints[6].model);
-                RA.Children.Add(joints[7].model);
-                RA.Children.Add(joints[8].model);
-                RA.Children.Add(joints[9].model);
-                RA.Children.Add(joints[10].model);
+                //RA.Children.Add(joints[3].model);
+                //RA.Children.Add(joints[4].model);
+                //RA.Children.Add(joints[5].model);
+                //RA.Children.Add(joints[6].model);
+                //RA.Children.Add(joints[7].model);
+                //RA.Children.Add(joints[8].model);
+                //RA.Children.Add(joints[9].model);
+                //RA.Children.Add(joints[10].model);
 #if IRB6700
-                RA.Children.Add(joints[11].model);
-                RA.Children.Add(joints[12].model);
-                RA.Children.Add(joints[13].model);
-                RA.Children.Add(joints[14].model);
-                RA.Children.Add(joints[15].model);
-                RA.Children.Add(joints[16].model);
-                RA.Children.Add(joints[17].model);
+                //RA.Children.Add(joints[11].model);
+                //RA.Children.Add(joints[12].model);
+                //RA.Children.Add(joints[13].model);
+                //RA.Children.Add(joints[14].model);
+                //RA.Children.Add(joints[15].model);
+                //RA.Children.Add(joints[16].model);
+                //RA.Children.Add(joints[17].model);
                 RA.Children.Add(joints[18].model);
                 RA.Children.Add(joints[19].model);
 #endif
@@ -259,50 +288,50 @@ namespace RobotArmHelix
                 joints[0].rotPointY = 0;
                 joints[0].rotPointZ = 0;
 
-                joints[1].angleMin = -100;
-                joints[1].angleMax = 60;
-                joints[1].rotAxisX = 0;
-                joints[1].rotAxisY = 1;
+                joints[1].angleMin = 0;
+                joints[1].angleMax = 0;
+                joints[1].rotAxisX = 1;
+                joints[1].rotAxisY = 0;
                 joints[1].rotAxisZ = 0;
-                joints[1].rotPointX = 348;
-                joints[1].rotPointY = -243;
-                joints[1].rotPointZ = 775;
+                joints[1].rotPointX = 0;
+                joints[1].rotPointY = 0;
+                joints[1].rotPointZ = 0;
 
-                joints[2].angleMin = -90;
-                joints[2].angleMax = 90;
-                joints[2].rotAxisX = 0;
-                joints[2].rotAxisY = 1;
+                joints[2].angleMin = 0;
+                joints[2].angleMax = 0;
+                joints[2].rotAxisX = 1;
+                joints[2].rotAxisY = 0;
                 joints[2].rotAxisZ = 0;
-                joints[2].rotPointX = 347;
-                joints[2].rotPointY = -376;
-                joints[2].rotPointZ = 1923;
+                joints[2].rotPointX = 0;
+                joints[2].rotPointY = 0;
+                joints[2].rotPointZ = 0;
 
                 joints[3].angleMin = -180;
                 joints[3].angleMax = 180;
                 joints[3].rotAxisX = 1;
                 joints[3].rotAxisY = 0;
                 joints[3].rotAxisZ = 0;
-                joints[3].rotPointX = 60;
+                joints[3].rotPointX = 0;
                 joints[3].rotPointY = 0;
-                joints[3].rotPointZ = 2125;
+                joints[3].rotPointZ = 0;
 
                 joints[4].angleMin = -115;
                 joints[4].angleMax = 115;
                 joints[4].rotAxisX = 0;
                 joints[4].rotAxisY = 1;
                 joints[4].rotAxisZ = 0;
-                joints[4].rotPointX = 1815;
+                joints[4].rotPointX = 0;
                 joints[4].rotPointY = 0;
-                joints[4].rotPointZ = 2125;
+                joints[4].rotPointZ = 0;
 
                 joints[5].angleMin = -180;
                 joints[5].angleMax = 180;
                 joints[5].rotAxisX = 1;
                 joints[5].rotAxisY = 0;
                 joints[5].rotAxisZ = 0;
-                joints[5].rotPointX = 2008;
+                joints[5].rotPointX = 0;
                 joints[5].rotPointY = 0;
-                joints[5].rotPointZ = 2125;
+                joints[5].rotPointZ = 0;
 
 #else
                 changeModelColor(joints[6], Colors.Red);

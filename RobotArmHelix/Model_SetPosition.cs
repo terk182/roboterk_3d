@@ -39,15 +39,7 @@ namespace RobotArmHelix
         public GeometryModel3D SetPositionData(GeometryModel3D model, Color color, double x, double y, double z)
         {
 
-            ModelImporter import = new ModelImporter();
-            var materialGroup = new MaterialGroup();
-            Color mainColor = color;
-            EmissiveMaterial emissMat = new EmissiveMaterial(new SolidColorBrush(mainColor));
-            DiffuseMaterial diffMat = new DiffuseMaterial(new SolidColorBrush(mainColor));
-            SpecularMaterial specMat = new SpecularMaterial(new SolidColorBrush(mainColor), 200);
-            materialGroup.Children.Add(emissMat);
-            materialGroup.Children.Add(diffMat);
-            materialGroup.Children.Add(specMat);
+           
 
             var my_point = new Point3D(x, y, z);
 
@@ -58,8 +50,6 @@ namespace RobotArmHelix
 
             model.Transform = myTranslate;//(new Quaternion(_axis, 90)); 
 
-            model.Material = materialGroup;
-            model.BackMaterial = materialGroup;
 
             //model.Position = new Point3D(0, 0, 0);
             return model;

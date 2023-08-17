@@ -9,12 +9,12 @@
         <h:HelixViewport3D x:Name="viewPort3d" ViewCubeHeight="150" ViewCubeWidth="150" ViewCubeVerticalPosition="Bottom" CoordinateSystemLabelForeground="White" CoordinateSystemVerticalPosition="Center" CoordinateSystemHorizontalPosition="Right" CoordinateSystemHeight="150" CoordinateSystemWidth="150" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Unspecified" BorderBrush="Black" BorderThickness="5" ShowCoordinateSystem="True" ShowFrameRate="True" Grid.Column="1" ShowCameraInfo="True" MouseLeftButtonUp="ViewPort3D_OnMouseLeftButtonUp" MouseLeftButtonDown="ViewPort3D_OnMouseLeftButtonDown" IsManipulationEnabled="True" IsViewCubeEdgeClicksEnabled="True">
             <h:HelixViewport3D.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF060A13" Offset="0"/>
-                    <GradientStop Color="#FF1D64FF" Offset="1"/>
+                    <GradientStop Color="#AEB6BF " Offset="0"/>
+                    <GradientStop Color="#FBFCFC" Offset="1"/>
                 </LinearGradientBrush>
             </h:HelixViewport3D.Background>
             <!-- Remember to add light to the scene -->
-            <h:GridLinesVisual3D Width="16000" Length="16000" Thickness="1.5" MinorDistance="100" MajorDistance="400" Fill="#E5CFCECE" />
+            <h:GridLinesVisual3D Width="1600" Length="1600" Thickness="1.5" MinorDistance="100" MajorDistance="400" Fill="#E5CFCECE" />
             <h:DefaultLights/>
         </h:HelixViewport3D>
         <Rectangle Fill="#FFFBFBFB" HorizontalAlignment="Left" Height="414" Stroke="Black" VerticalAlignment="Top" Width="306" StrokeThickness="0.5" Margin="4,4,0,0"/>
