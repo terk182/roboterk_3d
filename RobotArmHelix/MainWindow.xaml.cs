@@ -85,12 +85,12 @@ namespace RobotArmHelix
         private const string MODEL_PATH1 = "Base.stl";
         private const string MODEL_PATH2 = "L1_link.stl";
         private const string MODEL_PATH3 = "L2_link.stl";
-        private const string MODEL_PATH4 = "L1_link.stl";
+        private const string MODEL_PATH4 = "base_griper.stl";
         private const string MODEL_PATH5 = "L1_link.stl";
         private const string MODEL_PATH6 = "L1_link.stl";
-        private const string MODEL_PATH7 = "IRB6700-MH3_245-300_IRC5_rev02_LINK01_CABLE.stl";
-        private const string MODEL_PATH8 = "IRB6700-MH3_245-300_IRC5_rev02_LINK01m_CABLE.stl";
-        private const string MODEL_PATH9 = "IRB6700-MH3_245-300_IRC5_rev00_LINK02_CABLE.stl";
+        private const string MODEL_PATH7 = "3Link V2.stl";
+        private const string MODEL_PATH8 = "sub_link1.stl";
+        private const string MODEL_PATH9 = "Sub_Link2 V2.stl";
         private const string MODEL_PATH10 = "IRB6700-MH3_245-300_IRC5_rev00_LINK02m_CABLE.stl";
         private const string MODEL_PATH11 = "IRB6700-MH3_245-300_IRC5_rev00_LINK03a_CABLE.stl";
         private const string MODEL_PATH12 = "IRB6700-MH3_245-300_IRC5_rev00_LINK03b_CABLE.stl";
@@ -99,7 +99,7 @@ namespace RobotArmHelix
         private const string MODEL_PATH15 = "IRB6700-MH3_245-300_IRC5_rev00_ROD_CAD.stl";
         private const string MODEL_PATH16 = "IRB6700-MH3_245-300_IRC5_rev00_LOGO1_CAD.stl";
         private const string MODEL_PATH17 = "IRB6700-MH3_245-300_IRC5_rev00_LOGO2_CAD.stl";
-        private const string MODEL_PATH18 = "IRB6700-MH3_245-300_IRC5_rev00_LOGO3_CAD.stl";
+        private const string MODEL_PATH18 = "subport_l1.stl";
         private const string MODEL_PATH19 = "Stand.stl";
         private const string MODEL_PATH20 = "MoveBaseV2.stl";
 #else
@@ -215,15 +215,55 @@ namespace RobotArmHelix
                         model = f.SetRotaion(model, 0, 0, 1, 180);
 
                     }
+                    else if (modelName == "subport_l1.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.White, 25, 90, -38);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 0, 0, 1, 270);
+                        //model = f.SetRotaion(model, 0, 0, 1, 180);
+
+                    }
+                    else if (modelName == "3Link V2.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.White, -62, 277, -27);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 0, 0, 1, 270);
+                        model = f.SetRotaion(model, 1, 0, 0, 3);
+
+                    }
+                    else if (modelName == "sub_link1.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.White, -62, 163, 28);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 0, 0, 1, 90);
+                     //   model = f.SetRotaion(model, 1, 0, 0, -2);
+
+                    }
                     else if (modelName == "L1_link.stl")
                     {
-                        model = f.SetPositionData(model, Colors.Green, -13.5, 126,  -15.5);
+                        model = f.SetPositionData(model, Colors.Green, -13.5, 136,  -15.5);
                         model = f.SetRotaion(model, 0, 1, 0, 90);
                         model = f.SetRotaion(model, 1, 0, 0, 90);
                     }
+                    else if (modelName == "base_griper.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.Green, -185, 207, -27);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 0, 0, 1, -90);
+                        //model = f.SetRotaion(model, 1, 0, 0, -30);
+
+                    }
+                    else if (modelName == "Sub_Link2 V2.stl")
+                    {
+                        model = f.SetPositionData(model, Colors.Green, 0, 262, -35);
+                        model = f.SetRotaion(model, 1, 0, 0, 90);
+                        model = f.SetRotaion(model, 0, 0, 1, -90);
+                        model = f.SetRotaion(model, 1, 0, 0, -36);
+
+                    }
                     else if (modelName == "L2_link.stl")
                     {
-                        model = f.SetPositionData(model, Colors.Green, -21.8, 230.2, -10);
+                        model = f.SetPositionData(model, Colors.Green, -16.8, 239, -10);
                         model = f.SetRotaion(model, 1, 0, 0, 90);
                         model = f.SetRotaion(model, 0, 0, 1, -90);
                         model = f.SetRotaion(model, 1, 0, 0, -30);
@@ -239,12 +279,12 @@ namespace RobotArmHelix
                 RA.Children.Add(joints[0].model);
                 RA.Children.Add(joints[1].model);
                 RA.Children.Add(joints[2].model);
-                //RA.Children.Add(joints[3].model);
+                RA.Children.Add(joints[3].model);
                 //RA.Children.Add(joints[4].model);
                 //RA.Children.Add(joints[5].model);
-                //RA.Children.Add(joints[6].model);
-                //RA.Children.Add(joints[7].model);
-                //RA.Children.Add(joints[8].model);
+                RA.Children.Add(joints[6].model);
+                RA.Children.Add(joints[7].model);
+                RA.Children.Add(joints[8].model);
                 //RA.Children.Add(joints[9].model);
                 //RA.Children.Add(joints[10].model);
 #if IRB6700
@@ -254,7 +294,7 @@ namespace RobotArmHelix
                 //RA.Children.Add(joints[14].model);
                 //RA.Children.Add(joints[15].model);
                 //RA.Children.Add(joints[16].model);
-                //RA.Children.Add(joints[17].model);
+                RA.Children.Add(joints[17].model);
                 RA.Children.Add(joints[18].model);
                 RA.Children.Add(joints[19].model);
 #endif
@@ -817,8 +857,8 @@ namespace RobotArmHelix
             Tz_Copy.Content = geom.Bounds.Location.Z;
 
 #if IRB6700
-            joints[6].model.Transform = F1;
-            joints[7].model.Transform = F1;
+            joints[6].model.Transform = F3;
+            joints[7].model.Transform = F3;
             joints[19].model.Transform = F1;
             joints[14].model.Transform = F1;
 
@@ -831,7 +871,7 @@ namespace RobotArmHelix
             joints[16].model.Transform = F3;
 
             joints[13].model.Transform = F4;
-            joints[17].model.Transform = F4;
+            joints[17].model.Transform = F1;
 #else
             joints[7].model.Transform = F1; //Cables
 
